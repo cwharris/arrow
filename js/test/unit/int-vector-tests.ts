@@ -44,6 +44,5 @@ describe('Int8Vector', () => {
         for (let i = 0; i < length; i++) {
             expect(intVector.get(i)).toEqual(i);
         }
-
     })
 })
