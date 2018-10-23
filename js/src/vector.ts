@@ -134,7 +134,13 @@ export { ArrowVector as Vector };
 export class NullVector                                       extends ArrowVector<Null> {}
 
 export class IntVector<T extends Int = any>                   extends ArrowVector<T> {}
-export class Int8Vector                                       extends IntVector<Int8> {}
+export class Int8Vector                                       extends IntVector<Int8> {
+    static from(ints: ArrayLike<number>): Int8Vector {
+        const intType = new Int8();
+        const intVals = Int8Array.from(ints);
+        return IntVector.new(Data.Int(intType, 0, ints.length, 0, null, intVals));
+    }
+}
 export class Int16Vector                                      extends IntVector<Int16> {}
 export class Int32Vector                                      extends IntVector<Int32> {}
 export class Int64Vector                                      extends IntVector<Int64> {}

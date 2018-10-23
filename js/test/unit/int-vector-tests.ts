@@ -16,7 +16,7 @@
 // under the License.
 
 import { Data } from '../../src/data';
-import { IntVector } from "../../src/vector";
+import { Vector, IntVector } from "../../src/vector";
 
 import { Int8,       Int16,       Int32,       Int64 } from '../../src/type';
 import { Int8Vector, Int16Vector, Int32Vector, Int64Vector } from '../../src/vector';
@@ -34,6 +34,14 @@ describe('Int8Vector', () => {
         const intVector: Int8Vector = IntVector.new(Data.Int(intType, 0, length, 0, null, intVals));
         for (let i = 0; i < length; i++) {
             expect(intVector.get(i)).toEqual(i);
+        }
+    })
+
+    test('can create an Int8Vector from array', () => {
+        const numbers = [0, 1, 2, 3, 4];
+        const intVector2 = Int8Vector.from(numbers);
+        for (let i = 0; i < numbers.length; i++) {
+            expect(intVector2.get(i)).toEqual(i);
         }
     })
 
